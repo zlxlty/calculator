@@ -23,3 +23,21 @@ double pop(void)
         return 0.0;
     }
 }
+
+void print_top(void)
+{
+    printf("%.2f\n", val[sp-1]);
+}
+
+double copy_top(void)
+{
+    return val[sp-1];
+}
+
+void swap_top2(void)
+{
+    double temp;
+    temp = val[sp-1];
+    val[sp-1] = val[sp-2];
+    val[sp-2] = temp;
+}
