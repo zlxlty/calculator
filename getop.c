@@ -9,6 +9,18 @@ int getop(char s[])
     while ((s[0] = c = getch()) == ' ' || c == '\t')
         ;
     s[1] = '\0';
+
+    if (c == '-')
+    {
+        if (isdigit(c = getch()))
+        {
+            s[0] = '-';
+            ungetch(c);
+        }else{
+            ungetch(c);
+            return '-';
+        }
+    }
     if (!isdigit(c) && c != '.')
         return c;
     i = 0;
