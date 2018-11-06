@@ -5,9 +5,9 @@
 #define MAXOP 100
 #define NUMBER '0'
 
-int getop(char []);
-void push(double);
-double pop(void);
+extern int getop(char []);
+extern void push(double);
+extern double pop(void);
 
 int main(int argc, char const *argv[]) {
 
