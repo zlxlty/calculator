@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 #include "calc.h"
 
 #define MAXOP 100
-#define NUMBER '0'
-#define FUNC '@'
 
 extern int getop(char []);
 extern void push(double);
@@ -13,15 +13,38 @@ extern double ans;
 
 int main(int argc, char const *argv[]) {
 
-  int type;
+  int i,type;
   double op2;
   char s[MAXOP];
+  char upvar;
+  double vars[26];
+
+  for (i = 0; i < 26; i++)
+      vars[i] = 0.0;
 
   while ((type = getop(s)) != EOF)
   {
       switch (type) {
       case FUNC:
           apply_func(s);
+          break;
+
+      case VAR:
+          upvar = s[0];
+          if (upvar >= 'A' && upvar <= 'Z')
+              push(vars[upvar - 'A']);
+          break;
+
+      case '=':
+          pop();
+          // printf("%c\n", upvar);
+          if (upvar >= 'A' && upvar <= 'Z')
+          {
+              vars[upvar - 'A'] = pop();
+              push(vars[upvar - 'A']);
+          }
+          else
+              printf("error: No such variable\n");
           break;
 
       case NUMBER:

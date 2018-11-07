@@ -3,6 +3,7 @@
 
 #define NUMBER '0'
 #define FUNC '@'
+#define VAR 'n'
 
 void push(double);
 double pop(void);

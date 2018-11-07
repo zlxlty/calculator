@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <string.h>
 #include "calc.h"
 
 int getop(char s[])
@@ -23,7 +24,8 @@ int getop(char s[])
             return '-';
         }
     }
-// if the operation is alphebat
+
+// if the operation is in alphebat
     i = 0;
     if (isalpha(c))
     {
@@ -32,7 +34,10 @@ int getop(char s[])
         s[i] = '\0';
         if (c != EOF)
             ungetch(c);
-        return FUNC;
+        if (strlen(s) > 1)
+            return FUNC;
+        else
+            return VAR;
     }
 
 
