@@ -6,10 +6,12 @@ int getop(char s[])
 {
     int i,c;
 
+// if the operation if space or \t
     while ((s[0] = c = getch()) == ' ' || c == '\t')
         ;
     s[1] = '\0';
 
+// if the operation is a negative number
     if (c == '-')
     {
         if (isdigit(c = getch()))
@@ -21,8 +23,24 @@ int getop(char s[])
             return '-';
         }
     }
+// if the operation is alphebat
+    i = 0;
+    if (isalpha(c))
+    {
+        while (isalpha(s[++i] = c = getch()))
+            ;
+        s[i] = '\0';
+        if (c != EOF)
+            ungetch(c);
+        return FUNC;
+    }
+
+
+// if the operation is arithmetic symbol
     if (!isdigit(c) && c != '.')
         return c;
+
+// if the operation is digits
     i = 0;
     if (isdigit(c))
         while (isdigit(s[++i] = c = getch()))

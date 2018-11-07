@@ -41,3 +41,13 @@ void swap_top2(void)
     val[sp-1] = val[sp-2];
     val[sp-2] = temp;
 }
+
+void clear_stack(void)
+{
+    int i;
+    for(i = sp-1; i >= 0; i--)
+    {
+        val[i] = 0;
+    }
+    sp = 0;
+}

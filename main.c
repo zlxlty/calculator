@@ -4,10 +4,12 @@
 
 #define MAXOP 100
 #define NUMBER '0'
+#define FUNC '@'
 
 extern int getop(char []);
 extern void push(double);
 extern double pop(void);
+extern double ans;
 
 int main(int argc, char const *argv[]) {
 
@@ -18,6 +20,10 @@ int main(int argc, char const *argv[]) {
   while ((type = getop(s)) != EOF)
   {
       switch (type) {
+      case FUNC:
+          apply_func(s);
+          break;
+
       case NUMBER:
           push(atof(s));
           break;
@@ -44,7 +50,8 @@ int main(int argc, char const *argv[]) {
           break;
 
       case '\n':
-          printf("\t%.8g\n", pop());
+          ans = pop();
+          printf("\t%.5g\n", ans);
           break;
 
       default:
