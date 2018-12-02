@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <math.h>
-#include <string.h>
 #include "calc.h"
 
 extern void push(double);

@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include "calc.h"
+
 #define BUFSIZE 100
 
 static char buf[BUFSIZE];

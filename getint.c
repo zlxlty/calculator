@@ -1,6 +1,5 @@
 #include "calc.h"
-#include <stdio.h>
-#include <ctype.h>
+
 #define SIZE 10
 
 extern int getch(void);
